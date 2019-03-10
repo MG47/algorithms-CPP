@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <array>
 
 /* std::vectors */
 void test_std_vectors()
