@@ -23,7 +23,8 @@ class Queue {
 		bool dequeue(T *data, unsigned int count = 1);
 		unsigned int len();
 		unsigned int get_maxsize();
-		T operator[](unsigned int index); 	// Read only, no assignment
+		/* For access only, no assignment */
+		T operator[](unsigned int index);
 
 	private:
 		bool m_debug_enable;
@@ -165,7 +166,7 @@ T Queue<T>::operator[](unsigned int index)
 	if (index < m_maxsize)
 		return m_arr[index];
 	std::cout << "Out of bounds index !!" << std::endl;
-	return 0;
+	return m_arr[0];
 }
 
 /* ==================================Test Stubs===================================== */
@@ -206,11 +207,6 @@ void test_int_queue()
 		std::cout << i << ":" << q[i] << std::endl;
 }
 
-void test_double_queue()
-{
-
-}
-
 void test_string_queue()
 {
 	std::string str_arr[] = {"Hello", "world", "motto", "alpha", "charlie", "tango"};
@@ -220,16 +216,24 @@ void test_string_queue()
 	Queue<std::string> q(3, 1);
 
 	q.enqueue(str_arr);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i] << std::endl;
 
 	q.dequeue(data);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i] << std::endl;
 
-	for (int i = 0; i < 4; i++)
-		std::cout << data[i] << std::endl;
+	q.enqueue(str_arr, 2);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i] << std::endl;
 
-	q.enqueue(str_arr);
 	q.enqueue(&my_string);
-	q.enqueue(&str_arr[1]);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i] << std::endl;
 
+	q.enqueue(&str_arr[1]);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i] << std::endl;
 }
 
 void test_box()
@@ -237,9 +241,25 @@ void test_box()
 	std::cout << "\n\n";
 	std::cout << "Test with Box" << std::endl;
 	Box b1, b2, b3;
-	Box b_arr[] = {b1, b2, b3};
+	Box box_arr[] = {b1, b2, b2};
+	Box data[3];
 
 	Queue<Box> q(4);
+	q.enqueue(box_arr, 2);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i].get_id() << std::endl;
+
+	q.dequeue(data, 1);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i].get_id() << std::endl;
+
+	q.enqueue(box_arr, 2);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i].get_id() << std::endl;
+
+	q.enqueue(box_arr, 2);
+	for (int i = 0; i < q.get_maxsize(); i++)
+		std::cout << i << ":" << q[i].get_id() << std::endl;
 
 }
 
@@ -251,9 +271,7 @@ int main()
 
 	test_int_queue();
 
-	test_double_queue();
-
-//	test_string_queue();
+	test_string_queue();
 
 	test_box();
 
