@@ -1,8 +1,13 @@
 /*
-* linked_list.cpp - Implementation of linked list
+* list.h - Implementation of linked list
 */
 
+#ifndef __LIST_H__
+#define __LIST_H__
+
 #include <iostream>
+
+namespace cstd {
 
 /* ============== Node =========== */
 template <typename T>
@@ -38,7 +43,6 @@ class List {
 		bool remove(T val);
 		void print_list();
 		T operator[](unsigned int index);
-
 		T head();
 		T tail();
 		bool insert_at_head(T val);
@@ -174,58 +178,6 @@ void List<int>::print_list()
 	std::cout << std::endl;
 }
 
- /* ==================================Test Stubs===================================== */
+} /* namespace cstd */
 
-void test_int_list()
-{
-	List<int> list;
-	list.insert(2);
-	list.insert(1);
-	list.insert(-22);
-	list.insert(-44);
-	list.print_list();
-
-	std:: cout << "head : " << list.head() << std::endl;
-
-	list.remove(2);
-	list.remove(5);
-	list.print_list();
-
-	std:: cout << "tail : " << list.tail() << std::endl;
-
-	list.remove(-22);
-	list.remove(-44);
-	list.insert(-12);
-	list.remove(1);
-	list.print_list();
-
-	list.insert(234);
-	list.print_list();
-
-	list.remove(234);
-	list.remove(-12);
-	list.print_list();
-
-	std:: cout << "elements" << std::endl;
-	std:: cout << list[0] << std::endl;
-	std:: cout << list[1] << std::endl;
-	std:: cout << list[2] << std::endl;
-	std:: cout << list[3] << std::endl;
-
-	std:: cout << "tail : " << list.tail() << std::endl;
-
-}
-
-/* ============================================================== */
-
-int main()
-{
-	std::cout << "==============Linked List=============" << std::endl;
-
-
-	test_int_list();
-
-	return 0;
-}
-
-
+#endif /*__LIST_H__ */
