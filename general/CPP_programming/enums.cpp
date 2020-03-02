@@ -75,6 +75,6 @@ int main()
 	change_gear(&c, Gear::REVERSE);
 	printf("car : current gear = 0x%x\n", current_gear(c));
 
-        return 0;
+	return 0;
 }
 

@@ -38,6 +38,6 @@ int main()
 
 	test_lambda();
 
-        return 0;
+	return 0;
 }
 

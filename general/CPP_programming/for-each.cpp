@@ -1,0 +1,44 @@
+/*
+* Program to study for-each
+* (Range-based for loops)
+*/
+
+#include <cstdio>
+#include <vector>
+#include <string>
+#include <iostream>
+
+void increment_vec(std::vector<double> &v)
+{
+	// by reference: elements are not copied to 'i'
+	for (auto &i : v)
+		i++;
+}
+
+void print_vec(std::vector<double> &v)
+{
+	for (auto i : v)
+		printf("%f\n", i);
+}
+
+int main()
+{
+	int arr[] = {0, 2, 1, 4, 4};
+	for (auto i : arr)
+		printf("%d\n", i);
+
+	std::vector<double> vec;
+	for (auto i = 0.2; i < 10; i++)
+		vec.push_back(i);
+
+	print_vec(vec);
+	increment_vec(vec);
+	print_vec(vec);
+
+	std::string str[] = {"This", "is", "a", "string"};
+	for (auto s : str)
+		std::cout << s << std::endl;
+
+	return 0;
+}
+
