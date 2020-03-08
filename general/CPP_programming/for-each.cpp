@@ -11,6 +11,7 @@
 void increment_vec(std::vector<double> &v)
 {
 	// by reference: elements are not copied to 'i'
+	// elements can be modified
 	for (auto &i : v)
 		i++;
 }
@@ -36,7 +37,7 @@ int main()
 	print_vec(vec);
 
 	std::string str[] = {"This", "is", "a", "string"};
-	for (auto s : str)
+	for (auto &s : str)
 		std::cout << s << std::endl;
 
 	return 0;
