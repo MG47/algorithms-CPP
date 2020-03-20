@@ -27,10 +27,10 @@ struct car {
 	bool is_electric;
 };
 
-std::vector<double> &sort_and_print(std::vector<double> &v)
+std::vector<double> &print(std::vector<double> &v)
 {
 
-	for (auto i : v)
+	for (auto const &i : v)
 		printf("%f\n", v[i]);
 
 	return v;
@@ -63,10 +63,7 @@ int main()
 		vec.push_back(i);
 
 	// automatic type deduction
-	auto v = sort_and_print(vec);
-	for (auto i = 0; i < v.size(); i++)
-		printf("v[%d] : %f\n", i, v[i]);
-
+	auto v = print(vec);
 
 	std::vector<car> c;
 

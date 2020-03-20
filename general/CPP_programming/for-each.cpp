@@ -18,7 +18,7 @@ void increment_vec(std::vector<double> &v)
 
 void print_vec(std::vector<double> &v)
 {
-	for (auto i : v)
+	for (auto const &i : v)
 		printf("%f\n", i);
 }
 
