@@ -1,3 +1,7 @@
+/*
+* Program to study templates - PART II
+*/
+
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -86,6 +90,7 @@ T &Array<T, size>::operator[](unsigned int index)
 {
 	if (index < size)
 		return m_arr[index];
+
 	std::cout << "Array index out of bounds!" << std::endl;
 	exit(EXIT_FAILURE);
 }
