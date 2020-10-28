@@ -1,3 +1,7 @@
+/*
+* Program to study move semantics
+*/
+
 #include <iostream>
 
 /* Class with Move constructor/assignment */

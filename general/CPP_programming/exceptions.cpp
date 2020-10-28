@@ -1,9 +1,14 @@
-#include <iostream>
+/*
+* Program to study exceptions
+*/
 
-class MyException : public exception
+#include <exception>
+#include <cstdio>
+
+class MyException : public std::exception
 {
 public:
-	const char * what () const throw ()
+	const char * what () const throw()
 	{
 		return "C++ Exception";
 	}
@@ -11,8 +16,7 @@ public:
 
 double division(int a, int b)
 {
-	if( b == 0 )
-	{
+	if (b == 0) {
 		throw "Division by zero condition!";
 	}
 	return (a/b);
@@ -28,11 +32,11 @@ int main ()
 	try
 	{
 		z = division(x, y);
-		std::cout << z << std::endl;
+		printf("z = %f\n", z);
 	}
 	catch (const char* msg)
 	{
-		std::cerr << msg << std::endl;
+		printf("msg = %s\n", msg);
 	}
 
 	try
@@ -41,8 +45,8 @@ int main ()
 	}
 	catch(MyException& e)
 	{
-		std::cout << "MyException caught" << std::endl;
-		std::cout << e.what() << std::endl;
+		printf("MyException caught\n");
+		printf("%s\n", e.what());
 	}
 	catch(std::exception& e)
 	{

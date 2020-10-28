@@ -1,3 +1,7 @@
+/*
+* Program to study C++11 smart pointers
+*/
+
 #include <iostream>
 #include <memory>
 

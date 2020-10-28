@@ -1,3 +1,7 @@
+/*
+* Program to study references
+*/
+
 #include <iostream>
 
 class Person
@@ -15,6 +19,41 @@ void test_class_ref()
 	per.age = 10;
 
 	std::cout << "Age  = " << ref_per.age << std::endl;
+
+}
+
+
+/* Return by reference */
+int& decrementer(int (&arr)[2])
+{
+	arr[0]--;
+	return arr[0];
+}
+
+void test_return_by_reference()
+{
+	int arr[] = {4, 2};
+
+	int val = decrementer(arr);
+	std::cout << "val  = " << val << std::endl;
+
+}
+
+/* Pass by reference */
+void incrementer(int (&arr)[3])
+{
+	arr[0]++;
+	arr[1]++;
+	arr[2]++;
+}
+
+void test_pass_by_reference()
+{
+	using namespace std;
+	int arr[] = {1, 2, 3};
+	incrementer(arr);
+
+	cout << arr[0] << arr[1] << arr[2] << endl;
 
 }
 
@@ -50,6 +89,10 @@ int main()
 	/* C++ - references  */
 
 	test_references();
+
+	test_pass_by_reference();
+
+	test_return_by_reference();
 
 	test_class_ref();
 

@@ -1,4 +1,8 @@
-#include <iostream>
+/*
+* Custom Vector TODO
+*/
+
+#include <cstdio>
 #include <stdlib.h>
 #include <string.h>
 
@@ -81,17 +85,17 @@ int main(void)
 		vec[i] = i * 2;
 
 	for (int i = 0; i < vec.len(); i++)
-		std::cout << vec[i] << std::endl;
+		printf("%d\n", vec[i]);
 
 	// Using copy constructor
 	Cvector my_vec2(vec);
 	for (int i = 0; i < my_vec2.len(); i++)
-		std::cout << my_vec2[i] << std::endl;
+		printf("%d\n", vec[i]);
 
 	// Using assignment operator
 	Cvector my_vec4 = my_vec2;
 	for (int i = 0; i < my_vec4.len(); i++)
-		std::cout << my_vec4[i] << std::endl;
+		printf("%d\n", vec[i]);
 
 	return 0;
 }

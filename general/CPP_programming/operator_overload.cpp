@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cstdio>
 
 class Box
 {
@@ -78,13 +78,13 @@ int main(void)
 	// Add volumes
 	double total_volume;
 	total_volume = mybox + secondbox;
-	std::cout << "Volume addition  = " << total_volume << std::endl;
+	printf("Volume addition = %f\n", total_volume);
 
 	total_volume = mybox + 30;
-	std::cout << "Volume addition  = " << total_volume << std::endl;
+	printf("Volume addition = %f\n", total_volume);
 
 	total_volume = 40 + secondbox;
-	std::cout << "Volume addition  = " << total_volume << std::endl;
+	printf("Volume addition = %f\n", total_volume);
 
 	return 0;
 }
