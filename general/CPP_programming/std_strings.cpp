@@ -30,6 +30,31 @@ void test_strings()
 		i++;
 	}
 
+	printf("str1 front = %c\n", str1.front());
+	printf("str1 addr = %p\n", str1.data());
+
+	// const iterator
+	std::string::const_iterator cit;
+	for (cit = str1.cbegin(); cit != str1.cend(); ++cit) {
+		//now allowed
+		//*it = 'd';
+		printf("%c\n", *cit);
+	}
+
+	// iterator
+	std::string::iterator it;
+	for (it = str1.begin(); it != str1.end(); ++it) {
+		*it = 'd';
+		printf("%c\n", *it);
+	}
+
+	str1.clear();
+	printf("str1 = %s\n", str1.c_str());
+
+	str1 = "World";
+	printf("str1 has %s at location %u\n", "rl", (unsigned int)str1.find("rl"));
+
+
 }
 
 int main()
