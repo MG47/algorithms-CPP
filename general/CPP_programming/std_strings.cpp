@@ -54,7 +54,19 @@ void test_strings()
 	str1 = "World";
 	printf("str1 has %s at location %u\n", "rl", (unsigned int)str1.find("rl"));
 
+	std::string str4;
 
+	char charstr[6];
+	str1.copy(charstr, sizeof charstr);
+	printf("charstr: %s\n", charstr);
+
+	str4 = str1;
+	str4.at(3) = 'z';
+	printf("str4: %s\n", str4.c_str());
+
+	printf("compare: %s\n", !str4.compare(str1) ?
+		"str1 == str4" : str4.compare(str1) > 0 ?
+		"str4 > str1" : "str1 > str4" );
 }
 
 int main()
