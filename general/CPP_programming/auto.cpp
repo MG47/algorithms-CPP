@@ -48,6 +48,12 @@ std::vector<car> &init_cars(std::vector<car> &c)
 	return c;
 }
 
+int &incrementer(int &num)
+{
+	num++;
+	return num;
+}
+
 int main()
 {
 	auto i = 3;
@@ -56,13 +62,19 @@ int main()
 	printf("i = %d\n", i);
 	printf("d = %f\n", d);
 
+	auto num = incrementer(i);
+	auto &num2 = incrementer(i);
+	printf("num = %d\n", num);
+	printf("num2 = %d\n", num2);
+
+
 	std::vector<double> vec;
 
 	// auto type
 	for (auto i = 0.2; i < 10; i++)
 		vec.push_back(i);
 
-	// automatic type deduction
+	// automatic type deduction, 'v' is a value, not a reference
 	auto v = print(vec);
 
 	std::vector<car> c;
