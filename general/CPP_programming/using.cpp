@@ -4,6 +4,7 @@
 
 #include <cstdio>
 #include <stdint.h>
+#include <vector>
 
 namespace intlengths {
 
@@ -25,12 +26,18 @@ struct dimensions {
 
 } // namespace floatlengths
 
+int printer(std::string &s)
+{
+    std::cout << s << std::endl;
+}
+
 void test_typedef_alias()
 {
 	using myint_t = int;
 	myint_t num = 15;
 	printf("num = %d\n", num);
 
+	/* namespace */
 	using namespace intlengths;
 	struct dimensions ds = {1, 2, 3};
 
@@ -40,6 +47,27 @@ void test_typedef_alias()
 	floatlengths::dimensions dsf = {1.2, 1.4, 1.5};
 	printf("ds lxwxh = %f x %f x %f\n", dsf.length, dsf.width, dsf.height);
 
+
+	/* Simplify complex names */
+	std::vector<std::pair<std::string, int>> pairlist;
+
+	using prlist = std::vector<std::pair<std::string, int>>
+	prlist pairlist2;
+
+
+	/* Function pointer typdef vs using */
+	std::string s("Hello World");
+	printer(s);
+
+	typedef int(*funcptr_t)(std::string &);
+
+	funcptr_t funcp = printer;
+	funcp(s);
+
+	using funcptr2_t = int(*)(std::string &);
+
+	funcptr2_t funcp2 = printer;
+	funcp2(s);
 }
 
 int main()

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <cstdio>
+#include <memory>
 
 struct buf {
 public:
@@ -57,6 +58,20 @@ void print_bufv(std::vector<struct buf> &bufv)
 	printf("buf: ==========\n");
 }
 
+void print_vec(std::shared_ptr<std::vector<int>> vptr)
+{
+	for (auto it = vptr->begin(); it != vptr->end(); ++it) {
+		printf("%d\n", (*it));
+	}
+}
+
+void test_vec_ptr()
+{
+	std::vector<int> v{1, 23, 17, 3, -1};
+	std::shared_ptr<std::vector<int>> vptr(new std::vector<int>(v));
+	print_vec(vptr);
+}
+
 void test_vectors()
 {
 	std::vector<double> vec;
@@ -108,6 +123,8 @@ void test_vectors()
 		printf("buffer: is linear ? %s\n", (*bit)->mIsLinear ? "YES" : "NO");
 
 	print_bufv(bufvp);
+
+	test_vec_ptr();
 }
 
 int main()

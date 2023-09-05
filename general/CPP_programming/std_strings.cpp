@@ -5,6 +5,31 @@
 #include <cstdio>
 #include <string>
 
+void print_string_view(std::string_view str)
+{
+	std::cout << str;
+}
+
+
+void test_string_view()
+{
+	std::string_view str{"Hel"};
+	print_string_view(str);
+
+	std::string str2 {str};
+	print_string_view(str2);
+
+	std::string_view str3(str);
+	str3 = "World";
+	print_string_view(str3);
+
+}
+
+void print_string(std::string *str)
+{
+	std::cout << *str;
+}
+
 void test_strings()
 {
 	std::string str1, str2, str3;
@@ -67,13 +92,17 @@ void test_strings()
 	printf("compare: %s\n", !str4.compare(str1) ?
 		"str1 == str4" : str4.compare(str1) > 0 ?
 		"str4 > str1" : "str1 > str4" );
+
+	print_str(&str4);
 }
 
 int main()
 {
-	/* C++ - std::strings */
+	/* C++ - std::strings, std::string_view */
 
 	test_strings();
+
+	test_string_view();
 
 	return 0;
 }
