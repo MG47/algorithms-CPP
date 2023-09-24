@@ -71,8 +71,8 @@ void test_references()
 	const int a = 5;
 	int b = 7;
 
-	//Illegal
-	//a = 10;
+	//Illegal : cannot have references to a const lvalue
+	//int &ref_a = 10;
 
 	//Legal
 	b = 12;

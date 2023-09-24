@@ -8,7 +8,7 @@
 
 /*
 * PART II:
-* Copy constructor/Initialization
+* Copy constructor/Initialization, default
 * overloaded assignment operator
 * deep copying, copy elision
 * explicit, delete
@@ -29,6 +29,10 @@ public:
 	} type_t;
 
 	Buffer() = default;
+
+	// Members in a member initializer list are always initialized
+	// in the order in which they are defined inside the class
+	// (not in the order they are defined in the member initializer list).
 	explicit Buffer(uint32_t len, uint32_t size, type_t type) :
 		m_len(len),
 		m_size(size),
@@ -84,7 +88,7 @@ public:
 		m_type(type)
 		{}
 
-	// Copy constructor
+	// Copy constructor - Pass const lvalue reference
 	CBuffer(CBuffer &cbuf) :
 		m_len(cbuf.m_len),
 		m_size(cbuf.m_size),
@@ -191,7 +195,6 @@ int main()
 	// Default constructor is deleted, invalid call
 	// GBuffer g3;
 
-
 	// Copy assignment
 	Buffer b4 = b3;
 	b4.printBufInfo();
@@ -199,6 +202,10 @@ int main()
 	// Copy assignment - default assignment
 	CBuffer c3 = c2;
 	c3.printBufInfo();
+
+	// Copy initialization
+	CBuffer c4 = {10, 25, CBuffer::TYPE_GRAPHIC};
+	c4.printBufInfo();
 
 	// Copy assignment is now allowed
 	GBuffer g2(2, 4, GBuffer::TYPE_GRAPHIC);

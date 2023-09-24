@@ -8,7 +8,7 @@
 void print_thread_details(int seq)
 {
 	// Without synchronization, threads can execute in any order
-	printf("Thread %d\n", seq);
+	printf("Thread id %d, seq %d\n", std::this_thread::get_id(), seq);
 	std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	printf("Thread %d exiting\n", seq);
 }

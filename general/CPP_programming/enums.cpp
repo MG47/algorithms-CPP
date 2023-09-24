@@ -1,5 +1,5 @@
 /*
-* Program to study enums
+* Program to study enums, scoped enums (enum classes)
 */
 
 #include <cstdio>
@@ -9,9 +9,9 @@
 * C-style enums with type specifiers
 **/
 enum car_type : uint64_t {
-        LUXURY_SPORTS,
-        SEDAN,
-        SUV,
+	LUXURY_SPORTS,
+	SEDAN,
+	SUV,
 };
 
 /*
@@ -37,8 +37,8 @@ enum class Gear : uint32_t {
 };
 
 struct car {
-        enum car_type type;
-        enum Gear current_gear;
+	enum car_type type;
+	enum Gear current_gear;
 }__attribute((packed));
 
 static inline enum Gear current_gear(struct car c)

@@ -2,9 +2,33 @@
 * Program to study std::vectors
 */
 
+#include <iostream>
 #include <vector>
 #include <cstdio>
 #include <memory>
+
+
+void print_2d_vector(std::vector<std::vector<int>> &matrix)
+{
+	for (int i = 0; i < matrix.size(); i++) {
+		for (int j = 0; j < matrix[i].size(); j++) {
+			printf("%d ", matrix[i][j]);
+		}
+		printf("\n");
+	}
+
+}
+
+void test_2d_vectors()
+{
+	std::vector<std::vector<int>> matrix {
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9}
+	};
+
+	print_2d_vector(matrix);
+}
 
 struct buf {
 public:
@@ -132,6 +156,8 @@ int main()
 	/* C++ - vectors */
 
 	test_vectors();
+
+	test_2d_vectors();
 
 	return 0;
 }

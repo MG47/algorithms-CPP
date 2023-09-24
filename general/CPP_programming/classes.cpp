@@ -35,9 +35,11 @@ public:
 
 	uint32_t getSize();
 	uint32_t getLength();
+	void setLength(Buffer &b, uint32_t);
 	type_t getType() const;
 	void printBufInfo();
 	static uint32_t get_destruct_count();
+	void reset();
 	friend void reset(Buffer *buf);
 	friend class BufferFiller;
 
@@ -95,10 +97,25 @@ uint32_t Buffer::getLength()
 	return m_len;
 }
 
+void Buffer::setLength(Buffer &b, uint32_t len)
+{
+	b.m_len = len;
+}
+
 Buffer::type_t Buffer::getType() const
 {
 	return m_type;
 }
+
+
+void Buffer::reset()
+{
+	this->m_len = 0;
+	this->m_size = 0;
+	this->m_type = Buffer::TYPE_INVALID;
+}
+
+// =========================================
 
 void Buffer::printBufInfo()
 {
@@ -173,6 +190,14 @@ void test_class()
 
 	Buffer c(10, 2, Buffer::TYPE_LINEAR);
 	c.printBufInfo();
+	c.reset();
+	c.printBufInfo();
+
+	// Access Levels work on per-class basis.
+	// Any object of the same class can access private members
+	// of other objects of the same class
+	c.setLength(b, 10);
+	b.printBufInfo();
 
 	Buffer *buf;
 	buf = new Buffer(100);
