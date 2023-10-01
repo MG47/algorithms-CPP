@@ -6,6 +6,7 @@
 #include <vector>
 #include <cstdio>
 #include <memory>
+#include <algorithm>
 
 
 void print_2d_vector(std::vector<std::vector<int>> &matrix)
@@ -28,6 +29,36 @@ void test_2d_vectors()
 	};
 
 	print_2d_vector(matrix);
+}
+
+void print_vec(std::vector<int> &vec)
+{
+	for (auto &i : vec)
+		printf("vec [%d] : %[%d]", i);
+}
+
+void test_vector_algorithms()
+{
+	std::vector<int> vec = {0, 1, 3, 4, 99, 12, -1};
+	print_vec(vec);
+
+	std::sort(vec.begin(), vec.end());
+	print_vec(vec);
+
+	std::sort(vec.begin(), vec.end(), std::greater<int>());
+	print_vec(vec);
+
+	auto beginIt = vec.begin();
+	auto it = std::find(vec.begin(), vec.end(), 4);
+	if (it != vec.end())
+		printf("Found element %d at index %d\n", *it, it - beginIt);
+	else
+		printf("Could not find element = %d\n", 4);
+
+	it = vec.begin();
+	std::advance(it, 4);
+	if (it != vec.end())
+		printf("Element at index %d = %d\n", it - beginIt, *it);
 }
 
 struct buf {
@@ -156,6 +187,8 @@ int main()
 	/* C++ - vectors */
 
 	test_vectors();
+
+	test_vector_algorithms();
 
 	test_2d_vectors();
 

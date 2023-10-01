@@ -45,19 +45,15 @@ void test_std_arrays()
 	}
 
 	increment(arr);
-	for (auto i : arr)
-		printf("%d\n", arr[i]);
+
+	print_arr(&arr);
 
 	// reverse sort, uses iterators
 	std::sort(arr.rbegin(), arr.rend());
-	for (auto i : arr)
-		printf("%d\n", arr[i]);
-
-	print_arr(arr.data(), arr.size());
+	print_arr(&arr);
 
 	std::array<GraphicBuffer, 2> gb_arr;
 	printf("size = %lu\n", gb_arr.size());
-
 }
 
 int main()

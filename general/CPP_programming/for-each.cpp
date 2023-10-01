@@ -5,6 +5,7 @@
 
 #include <cstdio>
 #include <vector>
+#include <list>
 #include <string>
 #include <iostream>
 
@@ -39,6 +40,15 @@ int main()
 	std::string str[] = {"This", "is", "a", "string"};
 	for (auto &s : str)
 		std::cout << s << std::endl;
+
+	std::list<double> mylist;
+	mylist.push_back(1.0);
+	mylist.push_back(2.0);
+	mylist.push_back(3.0);
+	mylist.push_back(4.0);
+
+	for (auto &l : mylist)
+		std::cout << l << std::endl;
 
 	return 0;
 }
